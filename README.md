@@ -61,7 +61,7 @@ All conversions, math and boolean operations store the result in the first opera
 
 ##### Boolean
 * `eq a b`: a == b
-* `neq a b`: a != and b
+* `neq a b`: a != b
 * `les a b`: a < b
 * `leq a b`: a <= b
 * `grt a b`: a > b
@@ -71,7 +71,7 @@ All conversions, math and boolean operations store the result in the first opera
 * `or a b`: a or b
 * `xor a b`: a xor b
 * `nand a b`: a nand b
-* `nor a b`: add a nor b
+* `nor a b`: a nor b
 * `nxor a b`: a nxor b
 
 ### Future work
