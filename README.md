@@ -9,34 +9,49 @@ A python assembly emulator.
 
 ### Instruction set
 
-* ; comment line
-* in a b: print b to stdout, then read string from stdin and store into a
-* out a b: print a and b to stdout
-* mov a b: store b into a
-    'jmp': jmp,
-    'bool': my_bool,
-    'int': my_int,
-    'flt': my_float,
-    'str': my_string,
-    'add': add,
-    'sub': sub,
-    'mul': mul,
-    'div': div,
-    'pow': my_pow,
-    'log': my_log,
-    'root': root,
-    'idiv': idiv,
-    'mod': mod,
-    'eq': eq,
-    'neq': neq,
-    'les': les,
-    'leq': leq,
-    'grt': grt,
-    'geq': geq,
-    'not': my_not,
-    'and': my_and,
-    'or': my_or,
-    'xor': xor,
-    'nand': nand,
-    'nor': nor,
-    'nxor': nxor
+##### Comments
+To comment a line write ';' at the beginning. For example:
+
+`;this is a comment`
+
+##### Labels
+To label a line, to be used in a jmp statement, simply write a single word in the line. For example:
+
+`this-is-a-label`
+
+##### Instructions
+* `in a b`: print b to stdout, then read string from stdin and store it into a
+* `out a b`: print a and b to stdout
+* `mov a b`: store b into a
+* `jmp a b`: if a, jump to b
+* `bool a b`:
+* `int a b`:
+* `flt a b`:
+* `str a b`:
+* `add a b`:
+* `sub a b`:
+* `mul a b`:
+* `div a b`:
+* `pow a b`:
+* `log a b`:
+* `root a b`:
+* `idiv a b`:
+* `mod a b`:
+* `eq a b`:
+* `neq a b`:
+* `les a b`:
+* `leq a b`:
+* `grt a b`:
+* `vgeq a b`:
+* `not a b`:
+* `and a b`:
+* `or a b`:
+* `xor a b`:
+* `nand a b`:
+* `nor a b`:
+* `nxor a b`:
+
+### Future work
+
+* Add arrays
+* Add some string manipulation support
