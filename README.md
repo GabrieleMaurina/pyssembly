@@ -1,11 +1,22 @@
 # Pyssembly
-A python assembly emulator.
+##### A python assembly emulator.
+This tool allows to execute pseudo assemply code and it is meant for teaching purposes.
 
 ### Install
 `python -m pip install pyssembly`
 
 ### Usage
 `python -m pyssembly <code.pys>`
+
+### Examples
+Examples available in the examples folder.
+
+Print the result of 137 * 2322:
+```
+mov a 137
+mul a 2322
+out a "\n"
+```
 
 ### Comments
 To comment a line write ';' at the beginning. For example:
@@ -18,38 +29,48 @@ To label a line, to use it as destination in a jmp statement, simply write a sin
 `this-is-a-label`
 
 ### Instruction set
-* `in a b`: print b to stdout, then read string from stdin and store it into a
+
+##### General
+* `in a b`: print b to stdout, read string from stdin, store it into a
 * `out a b`: print a and b to stdout
 * `mov a b`: store b into a
-* `jmp a b`: if a, jump to b
-* `bool a b`:
-* `int a b`:
-* `flt a b`:
-* `str a b`:
-* `add a b`:
-* `sub a b`:
-* `mul a b`:
-* `div a b`:
-* `pow a b`:
-* `log a b`:
-* `root a b`:
-* `idiv a b`:
-* `mod a b`:
-* `eq a b`:
-* `neq a b`:
-* `les a b`:
-* `leq a b`:
-* `grt a b`:
-* `vgeq a b`:
-* `not a b`:
-* `and a b`:
-* `or a b`:
-* `xor a b`:
-* `nand a b`:
-* `nor a b`:
-* `nxor a b`:
+* `jmp a b`: if a, jump to b (b can be a label or a line number)
+
+All conversions, math and boolean operations store the result in the first operand (a).
+
+##### Conversions
+* `bool a b`: boolean(b)
+* `int a b`: integer(b)
+* `flt a b`: float(b)
+* `str a b`: string(b)
+
+###### Math
+* `add a b`: a + b
+* `sub a b`: a - b
+* `mul a b`: a * b
+* `div a b`: a / b
+* `pow a b`: a<sup>b</sup>
+* `log a b`: log<sub>b</sub><sup>a</sup>
+* `root a b`: a<sup>1/b</sup>
+* `idiv a b`: a // b
+* `mod a b`: a % b
+
+##### Boolean
+* `eq a b`: a == b
+* `neq a b`: a != and b
+* `les a b`: a < b
+* `leq a b`: a <= b
+* `grt a b`: a > b
+* `geq a b`: a >= b
+* `not a b`: not b
+* `and a b`: a and b
+* `or a b`: a or b
+* `xor a b`: a xor b
+* `nand a b`: a nand b
+* `nor a b`: add a nor b
+* `nxor a b`: a nxor b
 
 ### Future work
 
 * Add arrays
-* Add some string manipulation support
+* Add string manipulation
