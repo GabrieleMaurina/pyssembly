@@ -1,0 +1,31 @@
+; read year from input and then tell if it is a leap year
+
+inp y "Year: "
+int y y
+
+mov d4 y
+mov d100 y
+mov d400 y
+
+mod d4 4
+mod d100 100
+mod d400 400
+
+bool d4 d4
+bool d100 d100
+bool d400 d400
+
+not d4 d4
+not d100 d100
+not d400 d400
+
+not leap d100
+and leap d4
+or leap d400
+
+jmp leap LEAP
+out y " is not a leap year.\n"
+jmp True END
+LEAP
+out y " is a leap year.\n"
+END

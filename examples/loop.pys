@@ -1,0 +1,12 @@
+; example of loop
+mov a 10
+
+; jump label
+LOOP
+mov b 10
+sub b a
+out b "\n"
+sub a 1
+
+; if a, jump to LOOP
+jmp a LOOP

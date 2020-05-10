@@ -1,0 +1,11 @@
+; ask user a number and print if it's even or odd
+
+inp a "Number: "
+int b a
+mod b 2
+jmp b ODD
+out a " is even\n"
+jmp 1 END
+ODD
+out a " is odd\n"
+END

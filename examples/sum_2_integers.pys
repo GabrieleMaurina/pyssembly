@@ -1,0 +1,8 @@
+; read 2 integers from input and print sum
+inp a "First number: "
+inp b "Second number: "
+int a a
+int b b
+add a b
+out "Sum: " a
+out "\n" null
