@@ -12,11 +12,15 @@ This tool allows to execute pseudo assemply code and it is meant for teaching pu
 Examples are available in the examples folder.
 
 Print the result of 137 * 2322:
+
+1) create file `example.pys` containing:
 ```
 mov a 137
 mul a 2322
 out a "\n"
 ```
+2) run it with: `python -m pyssembly <example.pys>`
+3) result: `318114`
 
 ### Comments
 To comment a line write ';' at the beginning. For example:
@@ -44,7 +48,7 @@ All conversions, math and boolean operations store the result in the first opera
 * `flt a b`: float(b)
 * `str a b`: string(b)
 
-###### Math
+###### Arithmetic
 * `add a b`: a + b
 * `sub a b`: a - b
 * `mul a b`: a * b
