@@ -13,13 +13,13 @@ Examples are available in the examples folder.
 
 Print the result of 137 * 2322:
 
-1) create file `example.pys` containing:
+1) create file `multiplication.pys` containing:
 ```
 mov a 137
 mul a 2322
 out a "\n"
 ```
-2) run it with: `python -m pyssembly <example.pys>`
+2) run it with: `python -m pyssembly multiplication.pys`
 3) result: `318114`
 
 ### Comments
