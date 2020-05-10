@@ -1,4 +1,4 @@
-# pyssembly
+# Pyssembly
 A python assembly emulator.
 
 ### Install
@@ -7,19 +7,17 @@ A python assembly emulator.
 ### Usage
 `python -m pyssembly <code.pys>`
 
-### Instruction set
-
-##### Comments
+### Comments
 To comment a line write ';' at the beginning. For example:
 
 `;this is a comment`
 
-##### Labels
+### Labels
 To label a line, to use it as destination in a jmp statement, simply write a single word in the line. For example:
 
 `this-is-a-label`
 
-##### Instructions
+### Instruction set
 * `in a b`: print b to stdout, then read string from stdin and store it into a
 * `out a b`: print a and b to stdout
 * `mov a b`: store b into a
