@@ -48,7 +48,7 @@ All conversions, math and boolean operations store the result in the first opera
 * `flt a b`: float(b)
 * `str a b`: string(b)
 
-###### Arithmetic
+##### Arithmetic
 * `add a b`: a + b
 * `sub a b`: a - b
 * `mul a b`: a * b
