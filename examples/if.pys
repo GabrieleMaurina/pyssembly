@@ -1,6 +1,6 @@
-; ask user a number and print if it's even or odd
+; read number from input and print if it's even or odd
 
-inp a "Number: "
+in a "Number: "
 int b a
 mod b 2
 jmp b ODD

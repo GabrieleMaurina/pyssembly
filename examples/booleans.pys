@@ -1,6 +1,6 @@
 ; read year from input and then tell if it is a leap year
 
-inp y "Year: "
+in y "Year: "
 int y y
 
 mov d4 y

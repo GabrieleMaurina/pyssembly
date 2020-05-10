@@ -91,7 +91,7 @@ def assign2(a, b, f, variables):
 
 
 
-def inp(a, b, variables):
+def my_in(a, b, variables):
 	assign1(a, b, lambda b: input(b), variables)
 
 def out(a, b, variables):
@@ -211,7 +211,7 @@ def nxor(a, b, variables):
 
 
 functions = {
-	'inp': inp,
+	'in': my_in,
 	'out': out,
 	'mov': mov,
 	'jmp': jmp,

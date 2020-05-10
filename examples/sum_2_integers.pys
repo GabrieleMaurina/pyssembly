@@ -1,6 +1,6 @@
 ; read 2 integers from input and print sum
-inp a "First number: "
-inp b "Second number: "
+in a "First number: "
+in b "Second number: "
 int a a
 int b b
 add a b
