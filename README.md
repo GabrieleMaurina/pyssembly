@@ -1,6 +1,6 @@
 # Pyssembly
 ##### A python assembly emulator.
-This tool allows to execute pseudo assemply code and it is meant for teaching purposes.
+This tool allows to execute pseudo assembly code and it is meant for teaching purposes.
 
 ### Install
 `python -m pip install pyssembly`
