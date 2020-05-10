@@ -319,7 +319,7 @@ def main():
 	if len(argv) > 1:
 		execute_file(argv[1], {})
 	else:
-		print('Usage: python -m pyssembly <code.pys>\nFind out more at https://github.com/GabrieleMaurina/pyssembly')
+		print('Usage: python -m pyssembly <code.pys>\n\nPyssembly allows to execute pseudo assemply code and it is meant for teaching purposes.\n\nFind out more at https://github.com/GabrieleMaurina/pyssembly')
 
 if __name__ == '__main__':
 	main()
