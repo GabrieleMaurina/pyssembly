@@ -9,7 +9,7 @@ This tool allows to execute pseudo assemply code and it is meant for teaching pu
 `python -m pyssembly <code.pys>`
 
 ### Examples
-Examples available in the examples folder.
+Examples are available in the examples folder.
 
 Print the result of 137 * 2322:
 ```
