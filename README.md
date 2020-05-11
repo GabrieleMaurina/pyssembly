@@ -66,6 +66,13 @@ The null value is simply the keyword `null`. Like so:
 
 `out "Hello world" null`
 
+##### Arrays
+Arrays are accessed using the `[]` sintax. For example:
+
+`mov arr[0] 6`
+
+Arrays are actually dictionaries and anything can be a key.
+
 ### Instruction set
 
 ##### General
