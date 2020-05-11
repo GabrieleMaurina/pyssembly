@@ -21,7 +21,7 @@ out a "\n"
 2) run it with: `python -m pyssembly multiplication.pys`
 3) result: `318114`
 
-##### Read 2 numbers from std and return average:
+##### Read 2 numbers from stdin and return average:
 1) create file `average.pys` containing:
 ```
 in a "First number: "
@@ -45,7 +45,11 @@ The average between 26 and 17 is: 21.5
 ```
 
 ### Pseudo assembly
-The language that pyssembly is able to execute is a pseudo assembly. All instructions have the form `<instruction> <operand a> <operand b>`.
+The language that pyssembly is able to execute is a pseudo assembly. All instructions have the form:
+
+`<instruction> <operand a> <operand b>`
+
+All instructions that return a result, store such result in the first operand (a).
 
 ##### Comments
 To comment a line write ';' at the beginning. For example:
@@ -58,9 +62,9 @@ To label a line, to use it as destination in a jmp statement, simply write a sin
 `this-is-a-label`
 
 ##### Null
-The null value is simply the keyword null. Like so:
+The null value is simply the keyword `null`. Like so:
 
-`null`
+`out "Hello world" null`
 
 ### Instruction set
 
@@ -69,8 +73,6 @@ The null value is simply the keyword null. Like so:
 * `jmp a b`: if a, jump to b (b can be a label or a line number)
 * `in a b`: print b to stdout, read string from stdin, store it into a
 * `out a b`: print a and b to stdout
-
-All following instructions store the result in the first operand (a).
 
 ##### Conversions
 * `bool a b`: boolean(b)
