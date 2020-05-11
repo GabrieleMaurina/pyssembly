@@ -3,12 +3,13 @@
 from sys import argv
 from shlex import split
 from random import uniform, randint
+from re import compile
 import math
 
 
 
 ######################################################################################
-#CONVERSIONS#
+#TYPES#
 ######################################################################################
 
 
@@ -50,8 +51,30 @@ def is_bool(v):
 def cast_bool(v):
 	return v != 'False'	
 
+dict_re = compile(r'^(\w*)\[(.*)\]$')
+
+def is_dict(v):
+	return dict_re.match(v)
+
+def get_dict(v, variables):
+	if m := dict_re.match(v):
+		d = m[1]
+		k = get(m[2], variables)
+		return variables[d][k]
+	else:
+		raise SyntaxError('Wrong dictionary: ' + v)
+
+def set_dict(v, value, variables):
+	if m := dict_re.match(v):
+		d = m[1]
+		k = get(m[2], variables)
+		if d in variables: variables[d][k] = value
+		else: variables[d] = {k:value}
+	else:
+		raise SyntaxError('Wrong dictionary: ' + v)
+
 def is_id(v):
-	return v and not is_int(v) and not is_float(v) and not is_string(v) and not is_null(v) and not is_bool(v)
+	return v and not is_int(v) and not is_float(v) and not is_string(v) and not is_null(v) and not is_bool(v) and not is_dict(v)
 
 
 
@@ -67,22 +90,26 @@ def get(v, variables):
 	elif is_string(v): return string(v)
 	elif is_null(v): return null(v)
 	elif is_bool(v): return cast_bool(v)
-	elif v in variables: return variables[v]
-	else: raise SyntaxError('Undefined token: ' + v)
+	else: return get_variable(v, variables)
 
 def get_variable(v, variables):
+	if is_dict(v): return get_dict(v, variables)
 	if v in variables: return variables[v]
 	else: raise SyntaxError('Undefined variable: ' + v)
 
+def set_variable(v, value, variables):
+	if is_dict(v): set_dict(v, value, variables)
+	elif is_id(v): variables[v] = value
+	else: raise SyntaxError('Wrong identifier: ' + v)
+
 def assign1(a, b, f, variables):
-	if not is_id(a): raise SyntaxError('Wrong identifier: ' + a)
 	b = get(b, variables)
-	variables[a] = f(b)
+	set_variable(a, f(b), variables)
 
 def assign2(a, b, f, variables):
 	a_value = get_variable(a, variables)
 	b = get(b, variables)
-	variables[a] = f(a_value, b)
+	set_variable(a, f(a_value, b), variables)
 
 
 
@@ -92,15 +119,6 @@ def assign2(a, b, f, variables):
 
 
 
-def my_in(a, b, variables):
-	assign1(a, b, lambda b: input(b), variables)
-
-def out(a, b, variables):
-	a = get(a, variables)
-	b = get(b, variables)
-	if a is not None: print(a, end='')
-	if b is not None: print(b, end='')
-
 def mov(a, b, variables):
 	assign1(a, b, lambda b: b, variables)
 
@@ -108,6 +126,15 @@ def jmp(a, b, variables):
 	a = get(a, variables)
 	if not is_id(b): raise SyntaxError('Wrong label: ' + b)
 	if a: return b
+
+def my_in(a, b, variables):
+	assign1(a, b, lambda b: input(b) if b else input(), variables)
+
+def out(a, b, variables):
+	a = get(a, variables)
+	b = get(b, variables)
+	if a is not None: print(a, end='')
+	if b is not None: print(b, end='')
 
 
 
@@ -264,10 +291,10 @@ def nxor(a, b, variables):
 
 functions = {
 #General
-	'in': my_in,
-	'out': out,
 	'mov': mov,
 	'jmp': jmp,
+	'in': my_in,
+	'out': out,
 #Conversions
 	'bool': my_bool,
 	'int': my_int,
@@ -319,6 +346,7 @@ functions = {
 
 
 def compile_instruction(position, instruction, labels):
+	instruction = instruction.strip()
 	tokens =  split(instruction, posix=False)
 	if len(tokens) == 0 or tokens[0].startswith(';'):
 		return ()

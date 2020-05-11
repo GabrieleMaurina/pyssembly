@@ -118,8 +118,3 @@ The null value is simply the keyword `null`. Like so:
 * `nand a b`: a nand b
 * `nor a b`: a nor b
 * `nxor a b`: a nxor b
-
-### Future work
-
-* Add arrays
-* Add string manipulation
