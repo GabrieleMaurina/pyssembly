@@ -1,0 +1,12 @@
+; read 2 numbers from stdin and output a random number between them
+
+in a "First number: "
+in b "Second number: "
+int a a
+int b b
+mov r a
+irnd r b
+out "A random number between " a
+out " and " b
+out " is " r
+out "\n" null

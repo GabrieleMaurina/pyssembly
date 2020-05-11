@@ -1,3 +1,5 @@
+; output result of multiplication 137 times 2322
+
 mov a 137
 mul a 2322
 out a "\n"

@@ -1,3 +1,5 @@
+; read 2 numbers from stdin and output the average
+
 in a "First number: "
 in b "Second number: "
 int a a
