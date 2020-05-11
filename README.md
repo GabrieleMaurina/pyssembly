@@ -92,8 +92,8 @@ The null value is simply the keyword `null`. Like so:
 * `mod a b`: a % b
 
 ##### Random
-* `rnd a b`: generate random float, a<=fr<=b
-* `irnd a b`: generate random integer, a<=ir<=b
+* `rnd a b`: generate random float, a<=rf<=b
+* `irnd a b`: generate random integer, a<=ri<=b
 
 ##### Trigonometry
 * `sin a b`: sin(b)
