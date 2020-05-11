@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 
 from sys import argv
-from math import log
 from shlex import split
+from random import uniform, randint
+import math
 
 
 
 ######################################################################################
-#CASTS#
+#CONVERSIONS#
 ######################################################################################
 
 
@@ -86,7 +87,7 @@ def assign2(a, b, f, variables):
 
 
 ######################################################################################
-#INSTRUCTIONS#
+#GENERAL#
 ######################################################################################
 
 
@@ -108,6 +109,14 @@ def jmp(a, b, variables):
 	if not is_id(b): raise SyntaxError('Wrong label: ' + b)
 	if a: return b
 
+
+
+######################################################################################
+#CONVERSIONS#
+######################################################################################
+
+
+
 def my_bool(a, b, variables):
 	assign1(a, b, lambda b: bool(b), variables)
 
@@ -123,7 +132,7 @@ def my_string(a, b, variables):
 
 
 ######################################################################################
-#MATH INSTRUCTIONS#
+#MATH#
 ######################################################################################
 
 
@@ -140,11 +149,11 @@ def mul(a, b, variables):
 def div(a, b, variables):
 	assign2(a, b, lambda a, b: a/b, variables)
 
-def my_pow(a, b, variables):
+def pow(a, b, variables):
 	assign2(a, b, lambda a, b: a**b, variables)
 
-def my_log(a, b, variables):
-	assign2(a, b, lambda a, b: log(a, b), variables)
+def log(a, b, variables):
+	assign2(a, b, lambda a, b: math.log(a, b), variables)
 
 def root(a, b, variables):
 	assign2(a, b, lambda a, b: a**(1/b), variables)
@@ -158,7 +167,50 @@ def mod(a, b, variables):
 
 
 ######################################################################################
-#BOOL INSTRUCTIONS#
+#RANDOM#
+######################################################################################
+
+
+
+def rnd(a, b, variables):
+	assign2(a, b, lambda a, b: uniform(a, b), variables)
+
+def irnd(a, b, variables):
+	assign2(a, b, lambda a, b: randint(a, b), variables)
+
+
+
+######################################################################################
+#TRIGONOMETRY#
+######################################################################################
+
+
+
+def sin(a, b, variables):
+	assign1(a, b, lambda a, b: math.sin(b), variables)
+
+def cos(a, b, variables):
+	assign1(a, b, lambda a, b: math.cos(b), variables)
+
+def tan(a, b, variables):
+	assign1(a, b, lambda a, b: math.tan(b), variables)
+
+def asin(a, b, variables):
+	assign1(a, b, lambda a, b: math.asin(b), variables)
+
+def acos(a, b, variables):
+	assign1(a, b, lambda a, b: math.acos(b), variables)
+
+def atan(a, b, variables):
+	assign1(a, b, lambda a, b: math.atan(b), variables)
+
+def atan2(a, b, variables):
+	assign2(a, b, lambda a, b: math.atan2(a, b), variables)
+
+
+
+######################################################################################
+#BOOLEAN#
 ######################################################################################
 
 
@@ -205,29 +257,44 @@ def nxor(a, b, variables):
 
 
 ######################################################################################
-#INSTRUCTIONS LIST#
+#INSTRUCTION SET#
 ######################################################################################
 
 
 
 functions = {
+#General
 	'in': my_in,
 	'out': out,
 	'mov': mov,
 	'jmp': jmp,
+#Conversions
 	'bool': my_bool,
 	'int': my_int,
 	'flt': my_float,
 	'str': my_string,
+#Math
 	'add': add,
 	'sub': sub,
 	'mul': mul,
 	'div': div,
-	'pow': my_pow,
-	'log': my_log,
+	'pow': pow,
+	'log': log,
 	'root': root,
 	'idiv': idiv,
 	'mod': mod,
+#Random
+	'rnd': rnd,
+	'irnd': irnd,
+#Trigonometry
+	'sin': sin,
+	'cos': cos,
+	'tan': tan,
+	'asin': asin,
+	'acos': acos,
+	'atan': atan,
+	'atan2': atan2,
+#Boolean
 	'eq': eq,
 	'neq': neq,
 	'les': les,
@@ -319,7 +386,7 @@ def main():
 	if len(argv) > 1:
 		execute_file(argv[1], {})
 	else:
-		print('Usage: python -m pyssembly <code.pys>\n\nPyssembly allows to execute pseudo assemply code and it is meant for teaching purposes.\n\nFind out more at https://github.com/GabrieleMaurina/pyssembly')
+		print('Usage: python -m pyssembly <code.pys>\n\nPyssembly allows to execute pseudo assembly code and it is meant for teaching purposes.\n\nFind out more at https://github.com/GabrieleMaurina/pyssembly')
 
 if __name__ == '__main__':
 	main()

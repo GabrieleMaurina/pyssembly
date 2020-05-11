@@ -1,0 +1,11 @@
+in a "First number: "
+in b "Second number: "
+int a a
+int b b
+mov avg a
+add avg b
+div avg 2
+out "The average between " a
+out " and " b
+out " is: " avg
+out "\n" null

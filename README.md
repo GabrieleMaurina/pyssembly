@@ -9,10 +9,9 @@ This tool allows to execute pseudo assembly code and it is meant for teaching pu
 `python -m pyssembly <code.pys>`
 
 ### Examples
-Examples are available in the examples folder.
+Lots of examples are available in the `examples` folder.
 
-Print the result of 137 * 2322:
-
+##### Print the result of 137 * 2322:
 1) create file `multiplication.pys` containing:
 ```
 mov a 137
@@ -22,25 +21,56 @@ out a "\n"
 2) run it with: `python -m pyssembly multiplication.pys`
 3) result: `318114`
 
-### Comments
+##### Read 2 numbers from std and return average:
+1) create file `average.pys` containing:
+```
+in a "First number: "
+in b "Second number: "
+int a a 
+int b b 
+mov avg a
+add avg b
+div avg 2
+out "The average between " a 
+out " and " b 
+out " is: " avg 
+out "\n" null
+```
+2) run it with: `python -m pyssembly average.pys`
+3) result:
+```
+First number: 26
+Second number: 17
+The average between 26 and 17 is: 21.5
+```
+
+### Pseudo assembly
+The language that pyssembly is able to execute is a pseudo assembly. All instructions have the form `<instruction> <operand a> <operand b>`.
+
+##### Comments
 To comment a line write ';' at the beginning. For example:
 
 `;this is a comment`
 
-### Labels
+##### Labels
 To label a line, to use it as destination in a jmp statement, simply write a single word in the line. For example:
 
 `this-is-a-label`
 
+##### Null
+The null value is simply the keyword null. Like so:
+
+`null`
+
 ### Instruction set
 
 ##### General
-* `in a b`: print b to stdout, read string from stdin, store it into a
-* `out a b`: print a and b to stdout
 * `mov a b`: store b into a
 * `jmp a b`: if a, jump to b (b can be a label or a line number)
+* `in a b`: print b to stdout, read string from stdin, store it into a
+* `out a b`: print a and b to stdout
 
-All conversions, math and boolean operations store the result in the first operand (a).
+All following instructions store the result in the first operand (a).
 
 ##### Conversions
 * `bool a b`: boolean(b)
@@ -48,7 +78,7 @@ All conversions, math and boolean operations store the result in the first opera
 * `flt a b`: float(b)
 * `str a b`: string(b)
 
-##### Arithmetic
+##### Math
 * `add a b`: a + b
 * `sub a b`: a - b
 * `mul a b`: a * b
@@ -58,6 +88,19 @@ All conversions, math and boolean operations store the result in the first opera
 * `root a b`: a<sup>1/b</sup>
 * `idiv a b`: a // b
 * `mod a b`: a % b
+
+##### Random
+* `rnd a b`: generate random float, a<=fr<=b
+* `irnd a b`: generate random integer, a<=ir<=b
+
+##### Trigonometry
+* `sin a b`: sin(b)
+* `cos a b`: cos(b)
+* `tan a b`: tan(b)
+* `asin a b`: asin(b)
+* `acos a b`: acos(b)
+* `atan a b`: atan(b)
+* `atan2 a b`: atan2(a, b)
 
 ##### Boolean
 * `eq a b`: a == b
